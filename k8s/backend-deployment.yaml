@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feedback-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feedback-backend
+  template:
+    metadata:
+      labels:
+        app: feedback-backend
+    spec:
+      containers:
+        - name: flask-backend
+          image: flask-backend
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
